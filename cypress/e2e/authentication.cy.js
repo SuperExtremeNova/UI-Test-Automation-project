@@ -31,6 +31,16 @@ describe('app authentication', () => {
         LoginPage.getGoogleLink.click()
         cy.url().should('not.contain',current_url)
 
+        cy.origin('https://accounts.google.com', () => {
+            cy.on('uncaught:exception', (e) => {
+                if (e.message.includes('Things went bad')) {
+                // we expected this error, so let's ignore it
+                // and let the test continue
+                return false
+                }
+            })
+        })
+
         cy.visit('/')
         LoginPage.getWelcomePageButton.click()
 
@@ -50,14 +60,8 @@ describe('app authentication', () => {
 
     it('should login user if an account exist with the email and password', () => {
         for(const user of userData) {
-            cy.visit('/')
-            LoginPage.getWelcomePageButton.click()
-            const current_url = cy.url()
-
-            LoginPage.getLoginTab.click()
-            LoginPage.getEmailInput.type(user.email)
-            LoginPage.getPwdInput.type(user.password)
-            LoginPage.getSubmitButton.click()
+            
+            LoginPage.loginUser(user.email, user.password)
 
             if(!user.isInputEmpty) {
                 
@@ -71,6 +75,8 @@ describe('app authentication', () => {
                 cy.url().should('contain','https://dev-mlluudmotpwoldtv.us.auth0.com/')
                 LoginPage.getBlankEntry.should('exist')
             }
+
+            cy.visit('/')
         }
     })
 

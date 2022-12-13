@@ -44,6 +44,16 @@ class LoginPage {
     get getBlankEntry() {
         return cy.get('.auth0-lock-error-invalid-hint')
     }
+
+    loginUser(email,password) {
+
+        this.getWelcomePageButton.click()
+        this.getLoginTab.click()
+        this.getEmailInput.type(email)
+        this.getPwdInput.type(password)
+        this.getSubmitButton.click()
+        
+    }
 }
 
 module.exports = new LoginPage()
