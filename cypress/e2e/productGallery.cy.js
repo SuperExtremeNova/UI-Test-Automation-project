@@ -5,7 +5,7 @@ const loginPage = require('../pageprojects/login.page')
 const productPage = require('../pageprojects/products.page')
 
 
-describe('Run test on Product Gallary page', () => {
+describe('Run test on Product Gallery page', () => {
     beforeEach(()=> {
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
