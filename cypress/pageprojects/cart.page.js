@@ -20,7 +20,7 @@ class cartPage {
         return cy.get('.snipcart-cart-header__option.snipcart-cart-header__count.snipcart__font--secondary.snipcart__font--bold')
     }
     get getContinueShopping() {
-        return cy.get('.snipcart-modal__close-title.snipcart__font--std')
+        return cy.get('span').contains('continue', {matchCase:false})
     }
     get getCartTitle() {
         return cy.get('.snipcart-cart-header__title.snipcart__font--black.snipcart__font--secondary')
@@ -33,4 +33,4 @@ class cartPage {
     }
 }
 
-module.exports = new cartPage
+module.exports = new cartPage()
