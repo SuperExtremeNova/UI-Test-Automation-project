@@ -31,6 +31,12 @@ class cartPage {
     get getCheckoutButton() {
         return cy.get('.snipcart-button-primary.snipcart-base-button.is-icon-right')
     }
+    get getReduceQTY() {
+        return cy.get('button[title="Decrement quantity"]')
+    }
+    get getIncreaseQTY() {
+        return cy.get('button[title="Increment quantity"]')
+    }
 }
 
 module.exports = new cartPage()
