@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+const cartPage = require('./cart.page')
+
 class productsPage {
 
     get getCartButton() {
@@ -21,6 +23,27 @@ class productsPage {
         return cy.get(`#product-${num}`)
     }
     
+    addProductToCart(items) {
+        
+        let count = 0
+
+        for( const item of items) {
+
+            const product = this.getproductContainers.children().contains(item,{matchCase:false})
+            const addProductButton = product.parents('.chakra-stack.css-uaqjf').contains('add to cart',{matchCase:false})
+            
+            cy.wait(2000)
+            addProductButton.click()
+
+            if(count < items.length) {
+                cy.wait(2000)
+                cartPage.getContinueShopping.click()
+                
+            }
+            
+            count += 1
+        }
+    }
 
 }
 
