@@ -56,7 +56,7 @@ describe('Adding products to the cart', () => {
         cartPage.getCartQTY.should('not.contain',cartQTYFirst)
     })
 
-    it.only('varify that multiple item can be added to the cart', () => {
+    it('varify that multiple item can be added to the cart', () => {
 
         let count = 0
         const items = ['fitted hat', 'trucker hat', 'mousepad']
@@ -67,7 +67,9 @@ describe('Adding products to the cart', () => {
 
             const addProductButton = product.parents('.chakra-stack.css-uaqjf').contains('add to cart',{matchCase:false})
             cy.wait(3000)
+
             addProductButton.click()
+            cy.visit('/products#/cart')
 
             if(count < items.length) {
                 cartPage.getContinueShopping.click()
