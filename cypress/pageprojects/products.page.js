@@ -34,11 +34,11 @@ class productsPage {
             
             cy.wait(2000)
             addProductButton.click()
+            cy.visit('/products#/cart')
 
             if(count < items.length) {
                 cy.wait(2000)
-                cartPage.getContinueShopping.click()
-                
+                cartPage.getContinueShopping.click() 
             }
             
             count += 1
