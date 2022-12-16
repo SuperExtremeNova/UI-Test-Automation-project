@@ -19,6 +19,10 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// Import the mocha reporter
+import 'cypress-mochawesome-reporter/register';
+
+// silent the api calls when running tests
 const app = window.top;
 if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
   const style = app.document.createElement('style');
