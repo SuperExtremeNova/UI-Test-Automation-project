@@ -15,6 +15,18 @@ class productsPage {
         return cy.get('.chakra-stack.css-uaqjf')
     }
 
+    get getproductTextLocator() {
+        return 'p.chakra-text.css-1n64n71'
+    }
+
+    get getproductImageLocator() {
+        return 'img[draggable="false"]'
+    }
+
+    getImageOfOneProduct() {
+        return cy.get('.chakra-image.css-2i84d9')
+    }
+
     get cartItemName() {
         return cy.get('.snipcart-item-line__title.snipcart__font--xlarge.snipcart__font--secondary.snipcart__font--black')
     }
