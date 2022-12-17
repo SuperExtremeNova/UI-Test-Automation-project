@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+const { resolve } = require('path')
 const cartPage = require('./cart.page')
 
 class productsPage {
@@ -27,8 +28,35 @@ class productsPage {
         return cy.get('.chakra-image.css-2i84d9')
     }
 
+    get getSortOption() {
+        return cy.get('#sort')
+    }
+    get getCategorySelections() {
+        return cy.get('#category')
+    }
+
     get cartItemName() {
         return cy.get('.snipcart-item-line__title.snipcart__font--xlarge.snipcart__font--secondary.snipcart__font--black')
+    }
+    get getProductCost() {
+        return cy.get('p.css-0')
+    }
+    get getProductCategory() {
+        return cy.get('span.css-1ccau2i')
+    }
+    get getResetbutton() {
+        return cy.get('#reset')
+    }
+
+    getArrayOfPrices(ProductCost) {
+        let prices = [];
+        return new Cypress.Promise((resolve) => {
+            ProductCost.each(($el) => {
+                let price = $el.text().replace('$', '')
+                prices.push(Number(price))
+            })
+            .then(() => resolve(prices))
+        })
     }
 
     getspecificProductContainer(num) {
