@@ -58,6 +58,10 @@ class productsPage {
         return cy.get('#reset')
     }
 
+    productQuantityInput(index){
+       return cy.get(`div .css-12qzrsi > div:nth-child(${index}) > div.css-n21gh5 > div > div:nth-child(2) > input`)
+    }
+
     getArrayOfPrices(ProductCost) {
         let prices = [];
         return new Cypress.Promise((resolve) => {
