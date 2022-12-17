@@ -19,6 +19,13 @@ class productsPage {
     get getproductTextLocator() {
         return 'p.chakra-text.css-1n64n71'
     }
+    
+    get getSearchInput() {
+        return cy.get('#search')
+    }
+    getProductName() {
+        return cy.get(this.getproductTextLocator)
+    }
 
     get getproductImageLocator() {
         return 'img[draggable="false"]'
