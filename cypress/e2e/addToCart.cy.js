@@ -33,6 +33,7 @@ describe('Adding products to the cart', () => {
     })
 
     it('varify the cart quantity increase after adding an item', () => {
+        cy.wait(3000)
         cy.visit('/products#/cart')
         let cartQTYFirst = null
 
@@ -49,9 +50,10 @@ describe('Adding products to the cart', () => {
 
         const addProductButton = product.parents().contains('add to cart',{matchCase:false})
         addProductButton.should('exist')
-        cy.wait(3000)
-        addProductButton.click()
 
+        addProductButton.click()
+        cy.wait(3000)
+        
         cy.visit('/products#/cart')
         cartPage.getCartQTY.should('not.contain',cartQTYFirst)
     })

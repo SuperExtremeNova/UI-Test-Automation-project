@@ -44,11 +44,10 @@ class productsPage {
             const product = this.getproductContainers.children().contains(item,{matchCase:false})
             const addProductButton = product.parents('.chakra-stack.css-uaqjf').contains('add to cart',{matchCase:false})
             
-            cy.wait(2000)
             addProductButton.click()
             cy.visit('/products#/cart')
 
-            if(count < items.length) {
+            if(count < items.length && items.length) {
                 cy.wait(2000)
                 cartPage.getContinueShopping.click() 
             }
