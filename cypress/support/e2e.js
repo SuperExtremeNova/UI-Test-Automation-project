@@ -33,5 +33,9 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
   app.document.head.appendChild(style);
 }
 
+// Import a sorting library to cypress
+const chaiSorted = require('chai-sorted');
+chai.use(chaiSorted);
+
 // Import the xpath for cypress calls
 require('cypress-xpath')
