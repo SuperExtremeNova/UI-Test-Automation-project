@@ -20,6 +20,9 @@ class productsPage {
         return 'p.chakra-text.css-1n64n71'
     }
     
+    get getContactButton() {
+        return cy.get('#top-contact')
+    }
     get getSearchInput() {
         return cy.get('#search')
     }
