@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+// get all the locator for the cart page and create functions to modify the selection on that page
 class cartPage {
     get getItemDescription() {
         return cy.get('.snipcart-item-description')

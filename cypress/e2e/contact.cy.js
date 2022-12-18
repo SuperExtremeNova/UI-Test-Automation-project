@@ -1,26 +1,27 @@
 /// <reference types="cypress"/>
 
+// import all needed resources for this test suite
 const productPage = require('../pageprojects/products.page')
 const loginPage = require('../pageprojects/login.page')
 const userData = require('../data/userdata')
 const contactPage = require('../pageprojects/contact.page')
 const contactData = require('../data/contactdata')
 
-describe('Varify the functionality of the contact page', () => {
-    beforeEach(() => {
+describe('verify the functionality of the contact page', () => {
+    beforeEach(() => { // runs before each of the tests cases
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
         productPage.getContactButton.click()
         cy.wait(1000)
     })
 
-    it('varify that the social media handlers are clickable', () => {
+    it('verify that the social media handlers are clickable', () => {
         contactPage.getSocialMediaHandlers.each(($el) => {
             expect($el).not.to.have.prop('disabled', false)
         })
     })
 
-    it('varify that the user can submit the form after entering all details', () => {
+    it('verify that the user can submit the form after entering all details', () => {
 
         contactPage.fillOutMessageForm(
             contactData[0].firstName, contactData[0].lastName, 
@@ -38,7 +39,7 @@ describe('Varify the functionality of the contact page', () => {
 
     })
 
-    it.only('varify that a user can not submit without all the required fields being filled out', () => {
+    it.only('verify that a user can not submit without all the required fields being filled out', () => {
         
         contactPage.fillOutMessageForm(
             contactData[0].firstName, contactData[0].lastName, 

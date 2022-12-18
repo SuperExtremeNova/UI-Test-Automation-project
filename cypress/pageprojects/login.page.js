@@ -1,4 +1,6 @@
 
+// get all the locator for the login/signUp page and create functions to modify the selection on that page
+
 class LoginPage {
 
     get getWelcomePageButton() {
@@ -45,6 +47,7 @@ class LoginPage {
         return cy.get('.auth0-lock-error-invalid-hint')
     }
 
+    //login with the user passed information by accessing the getters of this class
     loginUser(email,password) {
 
         this.getWelcomePageButton.click()

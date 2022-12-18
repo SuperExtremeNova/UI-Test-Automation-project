@@ -14,7 +14,7 @@ describe('Adding products to the cart', () => {
 
     })
 
-    it('varify that an item can be added to the cart', () => {
+    it('verify that an item can be added to the cart', () => {
 
         const itemName = 'fitted hat'
 
@@ -32,7 +32,7 @@ describe('Adding products to the cart', () => {
 
     })
 
-    it('varify the cart quantity increase after adding an item', () => {
+    it('verify the cart quantity increase after adding an item', () => {
         cy.wait(3000)
         cy.visit('/products#/cart')
         let cartQTYFirst = null
@@ -58,7 +58,7 @@ describe('Adding products to the cart', () => {
         cartPage.getCartQTY.should('not.contain',cartQTYFirst)
     })
 
-    it('varify that multiple item can be added to the cart', () => {
+    it('verify that multiple item can be added to the cart', () => {
 
         let count = 0
         const items = ['fitted hat', 'trucker hat', 'mousepad']

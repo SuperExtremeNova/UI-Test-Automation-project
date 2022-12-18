@@ -1,17 +1,18 @@
 /// <reference types="cypress"/>
 
+// importing all needed resources for the test suite
 const userData = require('../data/userdata')
 const loginPage = require('../pageprojects/login.page')
 const productPage = require('../pageprojects/products.page')
 
 
 describe('Run test on Product Gallery page', () => {
-    beforeEach(()=> {
+    beforeEach(() => { // runs before each of the tests cases
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
     })
 
-    it('varify that all products have a title', () => {
+    it('verify that all products have a title', () => {
 
         productPage.getproductContainers.each(($el) => {
         
@@ -23,7 +24,7 @@ describe('Run test on Product Gallery page', () => {
         //
     })
 
-    it('varify that all products have a cost', () => {
+    it('verify that all products have a cost', () => {
 
         productPage.getproductContainers.each(($el) => {
         
@@ -34,7 +35,7 @@ describe('Run test on Product Gallery page', () => {
         })
     })
 
-    it('varify that all products have an image', () => {
+    it('verify that all products have an image', () => {
 
         productPage.getproductContainers.each(($el) => {
         
