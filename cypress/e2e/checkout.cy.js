@@ -11,7 +11,7 @@ describe('Checkout process validation', () => {
     
     const items = ['fitted hat', 'trucker hat']
 
-    beforeEach(() => {
+    beforeEach(() => { // runs before each of the tests cases
 
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
@@ -21,7 +21,7 @@ describe('Checkout process validation', () => {
         cartPage.getCheckoutButton.click()
     })
 
-    it('varify that the billing form can be filled out completely', () => {
+    it('verify that the billing form can be filled out completely', () => {
 
         checkoutPage.getNameInput.should('be.visible')
 
@@ -42,7 +42,7 @@ describe('Checkout process validation', () => {
 
     })
 
-    it('varify that all required fields are filled out before continuing to payment', () => {
+    it('verify that all required fields are filled out before continuing to payment', () => {
         
         checkoutPage.getNameInput.should('be.visible')
 
@@ -62,7 +62,7 @@ describe('Checkout process validation', () => {
 
     })
 
-    it('varify that a user can\'t continue to payment if the required fields are not filled out', () => {
+    it('verify that a user can\'t continue to payment if the required fields are not filled out', () => {
         
         checkoutPage.getNameInput.should('be.visible')
 

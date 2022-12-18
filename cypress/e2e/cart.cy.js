@@ -1,5 +1,6 @@
 /// <reference types="cypress"/> 
 
+//import all required resources to this test suite
 const loginPage = require('../pageprojects/login.page')
 const userData = require('../data/userdata')
 const cartPage = require('../pageprojects/cart.page')
@@ -7,9 +8,9 @@ const productPage = require('../pageprojects/products.page')
 
 describe('cart options test', () => {
 
-    const items = ['fitted hat']
+    const items = ['fitted hat'] // global verible for the item
 
-    beforeEach(() =>{
+    beforeEach(() =>{ // runs before each of the tests cases
         
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
@@ -20,7 +21,7 @@ describe('cart options test', () => {
 
     })
 
-    it('varify a product has a title, discription nd all other valuable item information is showing in cart', () => {
+    it('verify a product has a title, discription nd all other valuable item information is showing in cart', () => {
         
         cy.url().should('contain','https://ui-automation-camp.vercel.app/products#/cart')
         cy.wait(3000)
@@ -34,22 +35,18 @@ describe('cart options test', () => {
 
     })
 
-    it('varify a product can be removed from the cart using the delete button', () => {
+    it('verify a product can be removed from the cart using the delete button', () => {
         let itemCount = items.length
         let item = items[itemCount-1]
         const selectedItem = cartPage.getItemName.contains(item, {matchCase:false})
-        
-        // .then(($name) => {
-        //     selectedItem = $name.text()
-        // })
 
         selectedItem.siblings('button').click()
         selectedItem.should('not.exist')
 
     })
 
-    it('varify that an item quantity can be modified in the cart', () => {
-        //snipcart-item-line__product
+    it('verify that an item quantity can be modified in the cart', () => {
+
         let itemQTY = 0
         let itemCount = items.length
         let item = items[itemCount-1]

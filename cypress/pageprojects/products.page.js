@@ -1,8 +1,10 @@
 /// <reference types="cypress"/>
 
+// import all need resources for the test suite
 const { resolve } = require('path')
 const cartPage = require('./cart.page')
 
+// get all the locator for the product page and create functions to modify the selection on that page
 class productsPage {
 
     get getCartButton() {
@@ -58,6 +60,7 @@ class productsPage {
         return cy.get('#reset')
     }
 
+    // gets the full price for all the items on the page and remove the $ sign and put them in an array
     getArrayOfPrices(ProductCost) {
         let prices = [];
         return new Cypress.Promise((resolve) => {
@@ -69,10 +72,12 @@ class productsPage {
         })
     }
 
+    // get the product using the id by passing a number to select
     getspecificProductContainer(num) {
         return cy.get(`#product-${num}`)
     }
     
+    // full function that adds items to the cart no matter the amount passed
     addProductToCart(items) {
         
         let count = 0

@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+// get all the locator for the contact page and create functions to modify the selection on that page
 class contactPage {
 
     get getSocialMediaHandlers() {
@@ -31,6 +32,7 @@ class contactPage {
         return cy.get('#toast-1-title')
     }
 
+    // using the passed value update the contact form on the page
     fillOutMessageForm(fname, lname, email, subject, Message) {
 
         this.getFirstName.clear().type(fname)

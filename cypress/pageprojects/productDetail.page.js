@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+// get all the locator for the product detail page
 class ProductDetailPage {
 
     get getProductName() {

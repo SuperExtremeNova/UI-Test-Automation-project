@@ -1,4 +1,5 @@
 
+// get all the locator for the checkout page and create functions to modify the selection on that page
 class checkoutPage {
 
     get getcontinueShopping() {
@@ -14,7 +15,6 @@ class checkoutPage {
         return cy.get('input[name="email"]')
     }
     get getStreet() {
-        //return cy.xpath('//label[contains(text(),"Street address")]/following-sibling::div[1]')
         return cy.get('input[name="address1"]')
     }
     get getApt() {
@@ -36,6 +36,7 @@ class checkoutPage {
         return cy.xpath('//div[contains(text(),"required")]')
     }
 
+    // fill out the billing information on the page using the  passed value
     filloutBillingInformation(fullname, email, street, apt, city, country, state, postal) {
         this.getNameInput.type(fullname)
         this.getEmailInput.type(email)

@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+// importing all of the resources that are needed in the test suite
 const userData = require('../data/userdata')
 const loginPage = require('../pageprojects/login.page')
 const productPage = require('../pageprojects/products.page')
@@ -7,11 +8,12 @@ const productDetailPage = require('../pageprojects/productDetail.page')
 
 describe('Product detail page testing', () => {
     
+    //global varibles for all of the test
     let productSelector = null
     let product = null
     let selectedProductName = null
 
-    beforeEach(() =>{
+    beforeEach(() =>{ // runs before each of the test cases
         
         cy.visit('/')
         loginPage.loginUser(userData[4].email, userData[4].password)
@@ -27,7 +29,7 @@ describe('Product detail page testing', () => {
         
     })
 
-    it('varify that the product details are on the page', () => {
+    it('verify that the product details are on the page', () => {
         
         productPage.getspecificProductContainer(productSelector).click()
         cy.url().should('contain','https://ui-automation-camp.vercel.app/products/')
@@ -38,7 +40,7 @@ describe('Product detail page testing', () => {
 
     })
 
-    it('varify that the customer can go back after check the product details', () => {
+    it('verify that the customer can go back after check the product details', () => {
     
         productPage.getspecificProductContainer(productSelector).click()
         cy.url().should('contain','https://ui-automation-camp.vercel.app/products/')
@@ -53,7 +55,7 @@ describe('Product detail page testing', () => {
 
     })
 
-    it('varify that the selected item has an image on the detail page', () => {
+    it('verify that the selected item has an image on the detail page', () => {
 
         productPage.getspecificProductContainer(productSelector).click()
         cy.url().should('contain','https://ui-automation-camp.vercel.app/products/')
@@ -64,7 +66,7 @@ describe('Product detail page testing', () => {
         productDetailPage.getSelectedProductImage.should('exist')
     })
 
-    it('varify that the user is unable to get to the detail page if the image is not clicked', () => {
+    it('verify that the user is unable to get to the detail page if the image is not clicked', () => {
 
         product = productPage.getspecificProductContainer(productSelector)
         product.find(productPage.getproductTextLocator).click()
